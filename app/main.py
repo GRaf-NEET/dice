@@ -39,11 +39,9 @@ class Room:
         self.players: Dict[WebSocket, str] = {}
         self.history: List[dict] = []
         self.cleanup_task: Optional[asyncio.Task] = None
-        # ===== ДОБАВЛЕНО: Очередь хода =====
         self.turn_order: List[WebSocket] = []  # Порядок ходов
         self.current_turn_index: int = 0  # Индекс текущего игрока
         self.is_turn_based: bool = True  # Режим по очереди (True) или свободный (False)
-        # ===================================
         logger.debug(f"Room created: {code}")
 
     def add_connection(self, ws: WebSocket, nickname: str):
